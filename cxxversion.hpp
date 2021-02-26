@@ -8,7 +8,8 @@
  *  201103L = C++ 11
  *  201402L = C++ 14
  *  201703L = C++ 17
- *  TBD     = C++ 20
+ *  202002L = C++ 20
+ *  TBD     = C++ 23
  *
  * Compiler flags like -std=[gnu|c]++0x and /std:c++latest might define
  * __cplusplus to be the associated ver but that does not mean all features or
