@@ -26,7 +26,7 @@ This inspects __cplusplus and various compiler specific macros to set the follow
 - PROJECT_CXX98
   - Set if __cplusplus says it so.
   - Don't blame me if your environment is that old.
-- PROJECT_MSC_VERSION
+- PROJECT_MSVC_VERSION
   - Defined to 0 or _MSC_VER.
 - PROJECT_CLANG_VERSION
   - Defined to 0 or a sum based on __clang_{major,minor,patchlevel}.
