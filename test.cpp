@@ -23,4 +23,6 @@ int main(int argc, char* argv[])
         << "CLANG version: " << cxxversion_and_stdheaders_CLANG_VERSION << endl
         << "GCC version: " << cxxversion_and_stdheaders_GCC_VERSION << endl
         << endl;
+
+    return 0;
 }
