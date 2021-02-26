@@ -1,5 +1,5 @@
-#ifndef PROJECT_CXXVERSION__H
-#define PROJECT_CXXVERSION__H
+#ifndef @PROJECT_NAME@_CXXVERSION__H
+#define @PROJECT_NAME@_CXXVERSION__H
 
 /*
  * __cplusplus values:
@@ -26,8 +26,8 @@
  *
  *      https://en.cppreference.com/w/cpp/compiler_support
  *
- * Each macro should be defined such that 'if PROJECT_CXXnn' always works. Ditto
- * 'if PROJECT_compiler_VERSION'.
+ * Each macro should be defined such that 'if @PROJECT_NAME@_CXXnn' always works. Ditto
+ * 'if @PROJECT_NAME@_compiler_VERSION'.
  */
 
 
@@ -39,55 +39,55 @@
  * C++ 17 support in Visual Studio 2017 from sub version. By 1915 (version 15.8)
  * it should be as complete as it gets.
  */
-#define PROJECT_CXX17 ( _MSVC_LANG > 201402L && _MSC_VER >= 1915)
+#define @PROJECT_NAME@_CXX17 ( _MSVC_LANG > 201402L && _MSC_VER >= 1915)
 
 /*
  * C++ 14 support in Visual Studio 2015 is pretty complete but a few things may
  * require some version of VS2017, and proper updates to VS2015.
  */
-#define PROJECT_CXX14 (_MSVC_LANG > 201103L && _MSC_VER >= 1900)
+#define @PROJECT_NAME@_CXX14 (_MSVC_LANG > 201103L && _MSC_VER >= 1900)
 
 /*
  * C++ 11 support in Visual Studio 2015 is pretty good, and was was very incremental from about VS2010 onwards.
  */
-#define PROJECT_CXX11 (_MSVC_LANG > 199711L && _MSC_VER >= 1900)
+#define @PROJECT_NAME@_CXX11 (_MSVC_LANG > 199711L && _MSC_VER >= 1900)
 
-#define PROJECT_MSVC_VERSION _MSC_VER
+#define @PROJECT_NAME@_MSVC_VERSION _MSC_VER
 #else
-#define PROJECT_MSVC_VERSION 0
+#define @PROJECT_NAME@_MSVC_VERSION 0
 #endif // _MSC_VER
 
 #if defined(__clang__)
 /* Clang does similar to GCC. */
 
-#define PROJECT_CLANG_VERSION ( __clang_major__ * 10000 \
+#define @PROJECT_NAME@_CLANG_VERSION ( __clang_major__ * 10000 \
                             + __clang_minor__ * 100 \
                             + __clang_patchlevel__ )
 
 /*
  * C++ 17 support in Clang/libstdc++ is pretty complete by version 4.0.
  */
-#define PROJECT_CXX17 (__cplusplus > 201103L && PROJECT_CLANG_VERSION >= 40000)
+#define @PROJECT_NAME@_CXX17 (__cplusplus > 201103L && @PROJECT_NAME@_CLANG_VERSION >= 40000)
 
 /*
  * C++ 14 support in Clang/libstdc++ is pretty complete by version 3.4
  */
-#define PROJECT_CXX14 ( __cplusplus > 201402L && PROJECT_CLANG_VERSION > 304000)
+#define @PROJECT_NAME@_CXX14 ( __cplusplus > 201402L && @PROJECT_NAME@_CLANG_VERSION > 304000)
 
 /*
  * C++ 11 support in Clang/libstdc++ is pretty complete by version 3.1
  * For all the C++ 11 goodies: you need clang 3.8, at which point you may as we use 4.0!
  */
-#define PROJECT_CXX11 ( __cplusplus > 199711L && PROJECT_CLANG_VERSION >= 301000)
+#define @PROJECT_NAME@_CXX11 ( __cplusplus > 199711L && @PROJECT_NAME@_CLANG_VERSION >= 301000)
 
 #else
-#define PROJECT_CLANG_VERSION 0
+#define @PROJECT_NAME@_CLANG_VERSION 0
 #endif // __clang__
 
 #if defined(__GNUC__)
 
 /* by now we all wish GCC would just predefine this. */
-#define PROJECT_GCC_VERSION ( __GNUC__ * 10000 \
+#define @PROJECT_NAME@_GCC_VERSION ( __GNUC__ * 10000 \
                           + __GNUC_MINOR__ * 100 \
                           + __GNUC_PATCHLEVEL__ )
 
@@ -95,42 +95,42 @@
  * C++ 17 support in GCC/libstdc++ is pretty complete by version 7.
  * Some headers require version 9.1.
  */
-#define PROJECT_CXX17 (__cplusplus > 201402L && PROJECT_GCC_VERSION >= 70000)
+#define @PROJECT_NAME@_CXX17 (__cplusplus > 201402L && @PROJECT_NAME@_GCC_VERSION >= 70000)
 
 /*
  * C++ 14 support in GCC/libstdc++ is pretty complete by version 5.0
  */
-#define PROJECT_CXX14 (__cplusplus > 201103L && PROJECT_GCC_VERSION >= 50000)
+#define @PROJECT_NAME@_CXX14 (__cplusplus > 201103L && @PROJECT_NAME@_GCC_VERSION >= 50000)
 
 /*
  * C++ 11 support in GCC/libstdc++ is pretty complete by version 4.8, and partial from ~4.3.
  * For all the C++ 11 goodies: you need GCC with C++ 14 support.
  */
-#define PROJECT_CXX11 (__cplusplus > 199711L && PROJECT_GCC_VERSION >= 40800)
+#define @PROJECT_NAME@_CXX11 (__cplusplus > 199711L && @PROJECT_NAME@_GCC_VERSION >= 40800)
 
 #else
-#define PROJECT_GCC_VERSION 0
+#define @PROJECT_NAME@_GCC_VERSION 0
 #endif // __GNUC__
 
 /* If you can't do this, run for the hills and take your toolchain with you! */
-#define PROJECT_CXX98 (__cplusplus >= 199711L)
+#define @PROJECT_NAME@_CXX98 (__cplusplus >= 199711L)
 
 #if 0 // debug macros.
 /* use pragma because MSVC doesn't understand warning? */
 
-#if PROJECT_CXX98
+#if @PROJECT_NAME@_CXX98
 #pragma message("C++98 support.")
 #endif
-#if PROJECT_CXX11
+#if @PROJECT_NAME@_CXX11
 #pragma message("C++11 support.")
 #endif
-#if PROJECT_CXX14
+#if @PROJECT_NAME@_CXX14
 #pragma message("C++14 support.")
 #endif
-#if PROJECT_CXX17
+#if @PROJECT_NAME@_CXX17
 #pragma message("C++17 support.")
 #endif
 
 #endif // debug macros.
 
-#endif // PROJECT_CXXVERSION__H
+#endif // @PROJECT_NAME@_CXXVERSION__H

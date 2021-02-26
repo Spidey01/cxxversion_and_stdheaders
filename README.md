@@ -9,36 +9,37 @@ I created this for various projects to cope with that issue. Such that PROJECT_C
 ## Use
 
 1. Copy the two headers into your project.
-2. Replace all instances of "PROJECT_" with "YOURPREFIX_".
+2. Replace all instances of "@PROJECT@" with "YOURPREFIX".
 3. Send a pull request if changes needed.
 
+An easy way to do this is with cmake or sed.
 ### cxxversion.hpp
 
 This inspects __cplusplus and various compiler specific macros to set the following macros:
 
-- PROJECT_CXX17
+- @PROJECT_NAME@_CXX17
   - Set when C++ 2017 can be expected to work.
-- PROJECT_CXX14
+- @PROJECT_NAME@_CXX14
   - Set when C++ 2014 can be expected to work.
-- PROJECT_CXX11
+- @PROJECT_NAME@_CXX11
   - Set when C++ 2011 can be expected to work.
   - But you probably want an environment capable of C++14.
-- PROJECT_CXX98
+- @PROJECT_NAME@_CXX98
   - Set if __cplusplus says it so.
   - Don't blame me if your environment is that old.
-- PROJECT_MSVC_VERSION
+- @PROJECT_NAME@_MSVC_VERSION
   - Defined to 0 or _MSC_VER.
-- PROJECT_CLANG_VERSION
+- @PROJECT_NAME@_CLANG_VERSION
   - Defined to 0 or a sum based on __clang_{major,minor,patchlevel}.
-- PROJECT_GCC_VERSION
+- @PROJECT_NAME@_GCC_VERSION
   - Defined to 0 or a sum based on __GNUC__, __GNUC_MINOR__, and __GNUC_PATCHLEVEL__.
 
-At the end of the header is an #if 0 / #endif block. Turn it on if you want a message printed to indicate what PROJECT_CXXnn macros are set.
+At the end of the header is an #if 0 / #endif block. Turn it on if you want a message printed to indicate what @PROJECT_NAME@_CXXnn macros are set.
 
 ### stdheaders.hpp
 
-This includes all the standard headers associated with PROJECT_CXXnn. Such that a missing header should cause #include to fail.
+This includes all the standard headers associated with @PROJECT_NAME@_CXXnn. Such that a missing header should cause #include to fail.
 
-It assumes #include <PROJECT_/cxxversion.hpp> will work or that you edit the header to your needs.
+It assumes #include <@PROJECT_NAME@/cxxversion.hpp> will work or that you edit the header to your needs.
 
 If you have special needs like not caring about header xyz on your specific project, feel free to hack away.
